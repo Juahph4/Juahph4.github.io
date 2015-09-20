@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+
+</head>
+
+<dom-module id="twitch-player">
+  <template>
+		<object type="application/x-shockwave-flash" height="{{height}}" width="{{width}}" data="{{computeData(channel, type)}}" bgcolor="#000000">
+			<param name="allowFullScreen" value="{{allowFullScreen}}">
+			<param name="allowScriptAccess" value="always">
+			<param name="allowNetworking" value="all">
+			<param name="movie" value="{{computeValue(type)}}">
+			<template is="dom-if" if="{{computeIf(type)}}">
+				<param name="flashvars" value="{{computeValue2(autoPlay, channel, startVolume)}}">
+			</template>
+			<template is="dom-if" if="{{computeIf2(type)}}">
+				<param name="flashvars" value="{{computeValue3(archiveId, autoPlay, channel, startVolume)}}">
+			</template>
+		</object>
+	<!--	<a href$="{{computeHref(channel)}}">Watch live video from <span>{{channel}}</span> Productions on www.twitch.tv</a> -->
+	</template>
+  <script>
+    Polymer({
+      is: 'twitch-player',
+      properties: {
+        allowFullScreen: {
+          type: Boolean,
+          value: true,
+          notify: true
+        },
+        archiveId: { notify: true },
+        autoPlay: {
+          type: Boolean,
+          value: true,
+          notify: true
+        },
+        channel: {
+          type: String,
+          value: 'levelbf',
+          notify: true
+        },
+        height: {
+          type: Number,
+          value: 566,
+          notify: true
+        },
+        startVolume: {
+          type: Number,
+          value: 25,
+          notify: true
+        },
+        type: {
+          type: String,
+          value: 'live',
+          notify: true
+        },
+        width: {
+          type: Number,
+          value: 950,
+          notify: true
+        }
+      },
+      computeData: function (channel, type) {
+        return 'http://www.twitch.tv/widgets/' + type + '_embed_player.swf?channel=' + channel;
+      },
+      computeValue: function (type) {
+        return 'http://www.twitch.tv/widgets/' + type + '_embed_player.swf';
+      },
+      computeIf: function (type) {
+        return type === 'live';
+      },
+      computeIf2: function (type) {
+        return type === 'archive';
+      },
+      computeHref: function (channel) {
+        return 'http://www.twitch.tv/' + channel;
+      },
+      computeValue2: function (autoPlay, channel, startVolume) {
+        return 'hostname=www.twitch.tv&channel=' + channel + '&auto_play=' + autoPlay + '&start_volume=' + startVolume;
+      },
+      computeValue3: function (archiveId, autoPlay, channel, startVolume) {
+        return 'archive_id=' + archiveId + '&start_volume=' + startVolume + '&channel=' + channel + '&auto_play=' + autoPlay;
+      }
+    });
+  </script>
+</dom-module>

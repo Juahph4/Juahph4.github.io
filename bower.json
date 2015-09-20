@@ -1,0 +1,32 @@
+{
+  "name": "twitch-player",
+  "version": "0.3.0",
+  "authors": [
+    "<Kevin van der Staaij <kevin.vanderstaaij@gmail.com>>"
+  ],
+  "description": "A custom polymer element for embedding a twich.tv player.",
+  "main": "twitch-player.html",
+  "keywords": [
+    "polymer",
+    "web-component",
+    "web-components",
+    "twitch",
+    "player",
+	"stream",
+    "embed"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "polymer/polymer#~1.1.3"
+  },
+  "devDependencies": {
+    ""
+  }
+}
