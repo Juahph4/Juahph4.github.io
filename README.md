@@ -1,4 +1,4 @@
-# &lt;twitch-tv&gt;
+# &lt;twitch-player&gt;
 
 Web Component wrapper for embedding a [Twitch.tv player](http://www.twitch.tv/) using Polymer.
 
